@@ -30,7 +30,7 @@ impl event::EventHandler<ggez::GameError> for MainMenu {
     fn update(&mut self, _context: &mut Context) -> GameResult {
         Ok(())
     }
-        //清屏为黑色，绘制画面
+
     fn draw(&mut self, context: &mut Context) -> GameResult {
         graphics::clear(context, graphics::Color::BLACK);
         if let Some(background_image) = &self.background_image {
@@ -218,7 +218,7 @@ impl event::EventHandler<ggez::GameError> for Game {
 
 pub fn initialize_level(world: &mut World, index: i32) {
     // 从世界资源中读取音频存储
-
+    //let audio_store = world.read_resource::<AudioStore>().clone();
 
     // 使用新的作用域，在此作用域内删除所有实体，确保不会同时持有不可变和可变引用
     {
@@ -228,7 +228,7 @@ pub fn initialize_level(world: &mut World, index: i32) {
     }
 
     // 最后将音频资源插入世界并加载地图
-
+    //world.insert(audio_store);
     load_map(world, MAPS[index as usize].to_string());
 }
 
@@ -265,7 +265,7 @@ fn start_game(level: usize) -> GameResult {
 
     event::run(context, event_loop, game)
 }
-//主函数
+
 fn main() -> GameResult {
     let context_builder = ggez::ContextBuilder::new("rust_sokoban", "sokoban")
         .window_setup(conf::WindowSetup::default().title("Rust Sokoban - Main Menu"))
